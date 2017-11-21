@@ -1,4 +1,4 @@
-const initialState = {}
+const initialState = { messages: [] }
 
 export default (state = initialState, action) => {
   switch (action.type) {
