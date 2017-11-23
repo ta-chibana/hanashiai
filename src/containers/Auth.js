@@ -11,10 +11,14 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
+  const provider = new firebase.auth.GoogleAuthProvider()
+
   return {
-    onClickLogin: () => {
-      const provider = new firebase.auth.GoogleAuthProvider()
+    onClickSignIn: () => {
       firebaseApp.auth().signInWithPopup(provider)
+    },
+    onClickSignOut: () => {
+      firebaseApp.auth().signOut()
     },
     onMount: () => {
       firebaseApp.auth().onAuthStateChanged(user => {

@@ -5,10 +5,39 @@ export default class Auth extends React.Component {
     this.props.onMount()
   }
 
-  render() {
+  get isAuthorized() {
+    return !!this.props.auth.uid
+  }
+
+  get authorizeArea() {
     return (
       <div>
-        <button onClick={this.props.onClickLogin}>Login</button>
+        {this.isAuthorized ? this.signOut : this.signIn}
+      </div>
+    )
+  }
+
+  get signIn() {
+    return (
+      <button onClick={this.props.onClickSignIn}>SignIn</button>
+    )
+  }
+
+  get signOut() {
+    return (
+      <div>
+        {this.props.auth.displayName}
+        <button onClick={this.props.onClickSignOut}>SignOut</button>
+      </div>
+    )
+  }
+
+  render() {
+    const { auth } = this.props
+
+    return (
+      <div>
+        {this.authorizeArea}
       </div>
     )
   }
