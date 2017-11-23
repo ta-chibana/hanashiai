@@ -1,17 +1,32 @@
 import 'regenerator-runtime/runtime'
 import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
+import * as authClient from '../common/authorize'
+import {
+  signInSucceeded, signOutSucceeded,
+  SIGN_IN_REQUESTED, SIGN_OUT_REQUESTED
+} from 'Actions/auth'
 
-function* fetchMessages(action) {
+function* signIn() {
   try {
-    const messages = yield call(Api.fetchMessages)
-    yield put('MESSAGES_FETCH_SUCCEEDED', { messages })
+    const user = yield call(authClient.signIn)
+    yield put(signInSucceeded(user))
   } catch (e) {
-    yield put('MESSAGES_FETCH_FAILED', e)
+    // TODO: put SIGN_IN_FAILED
+  }
+}
+
+function* signOut() {
+  try {
+    yield call(authClient.signOut)
+    yield put(signOutSucceeded())
+  } catch (e) {
+    // TODO: put SIGN_OUT_FAILED
   }
 }
 
 function* saga() {
-  yield takeEvery('MESSAGES_FETCH_REQUESTED', fetchMessages)
+  yield takeEvery(SIGN_IN_REQUESTED, signIn)
+  yield takeEvery(SIGN_OUT_REQUESTED, signOut)
 }
 
 export default saga

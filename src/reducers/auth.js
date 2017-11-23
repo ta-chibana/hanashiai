@@ -1,4 +1,6 @@
-import { AUTHORIZED } from 'Actions/auth'
+import {
+  AUTHORIZED, SIGN_IN_SUCCEEDED, SIGN_OUT_SUCCEEDED
+} from 'Actions/auth'
 
 const initialState = {
   uid: null,
@@ -7,10 +9,14 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
-  const { uid, email, displayName } = action
   switch (action.type) {
+    case SIGN_IN_SUCCEEDED:
     case AUTHORIZED: {
-      return Object.assign({}, state, { uid, email, displayName })
+      const { uid, email, displayName } = action.user
+      return { uid, email, displayName }
+    }
+    case SIGN_OUT_SUCCEEDED: {
+      return initialState
     }
     default: {
       return state

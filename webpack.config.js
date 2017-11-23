@@ -25,7 +25,8 @@ module.exports = {
       Actions: path.resolve(__dirname, 'src/actions'),
       Components: path.resolve(__dirname, 'src/components'),
       Containers: path.resolve(__dirname, 'src/containers'),
-      Reducers: path.resolve(__dirname, 'src/reducers')
+      Reducers: path.resolve(__dirname, 'src/reducers'),
+      Sagas: path.resolve(__dirname, 'src/sagas')
     }
   },
   devtool: 'inline-source-map'

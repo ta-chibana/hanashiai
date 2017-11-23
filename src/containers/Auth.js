@@ -2,7 +2,7 @@ import firebase from 'firebase'
 import { firebaseApp } from '../firebase'
 import { connect } from 'react-redux'
 import Auth from 'Components/Auth'
-import { authorize } from 'Actions/auth'
+import { authorized, signIn, signOut } from 'Actions/auth'
 
 const mapStateToProps = (state) => {
   return {
@@ -15,17 +15,17 @@ const mapDispatchToProps = (dispatch) => {
 
   return {
     onClickSignIn: () => {
-      firebaseApp.auth().signInWithPopup(provider)
+      dispatch(signIn())
     },
     onClickSignOut: () => {
-      firebaseApp.auth().signOut()
+      dispatch(signOut())
     },
     onMount: () => {
       firebaseApp.auth().onAuthStateChanged(user => {
         if (!user) {
           return
         }
-        dispatch(authorize(user))
+        dispatch(authorized(user))
       })
     }
   }
