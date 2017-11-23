@@ -5,7 +5,7 @@ import { createStore, compose, applyMiddleware } from 'redux'
 import messages from 'Reducers/messages'
 import createSagaMiddleware from 'redux-saga'
 import saga from './sagas'
-import App from 'Containers/App'
+import Root from 'Containers/Root'
 
 const sagaMiddleware = createSagaMiddleware()
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
@@ -19,7 +19,7 @@ sagaMiddleware.run(saga)
 
 render(
   <Provider store={store}>
-    <App />
+    <Root />
   </Provider>,
   document.querySelector('#app')
 )
