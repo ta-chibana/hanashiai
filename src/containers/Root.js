@@ -1,5 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Messages from 'Components/Messages'
+import App from 'Components/App'
 
-export default connect()(Messages)
+const mapStateToProps = (state) => {
+  return {
+    uid: state.auth.uid,
+    displayName: state.auth.displayName
+  }
+}
+
+export default connect(mapStateToProps)(App)
