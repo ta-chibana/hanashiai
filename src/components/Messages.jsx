@@ -1,7 +1,23 @@
 import React from 'react'
 
-const Messages = () => (
-  <div>Messages</div>
-)
+export default class Messages extends React.Component {
+  get messageList() {
+    const { messages } = this.props
 
-export default Messages
+    return Object.keys(messages).map((key) => (
+      <div key={key}>
+        <span>{`${messages[key].userName}: `}</span>
+        <span>{messages[key].message}</span>
+      </div>
+    ))
+  }
+
+  render() {
+    return (
+      <div>
+        <h2>Messages</h2>
+        {this.messageList}
+      </div>
+    )
+  }
+}

@@ -3,6 +3,7 @@ import { firebaseApp } from '../firebase'
 import { connect } from 'react-redux'
 import Auth from 'Components/Auth'
 import { authorized, signIn, signOut } from 'Actions/auth'
+import { subscribeMessages, unSubscribeMessages } from 'Actions/messages'
 
 const mapStateToProps = (state) => {
   return {
@@ -11,8 +12,6 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  const provider = new firebase.auth.GoogleAuthProvider()
-
   return {
     onClickSignIn: () => {
       dispatch(signIn())
@@ -23,9 +22,11 @@ const mapDispatchToProps = (dispatch) => {
     onMount: () => {
       firebaseApp.auth().onAuthStateChanged(user => {
         if (!user) {
+          unSubscribeMessages(dispatch)
           return
         }
         dispatch(authorized(user))
+        subscribeMessages(dispatch)
       })
     }
   }
