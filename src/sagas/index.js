@@ -3,8 +3,7 @@ import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
 import * as authClient from '../common/authorize'
 import * as dbClient from '../common/database'
 import {
-  signInSucceeded, signOutSucceeded,
-  SIGN_IN_REQUESTED, SIGN_OUT_REQUESTED
+  signOutSucceeded, SIGN_IN_REQUESTED, SIGN_OUT_REQUESTED
 } from 'Actions/auth'
 import {
   writeMessageSucceeded,
@@ -13,8 +12,7 @@ import {
 
 function* signIn() {
   try {
-    const user = yield call(authClient.signIn)
-    yield put(signInSucceeded(user))
+    yield call(authClient.signIn)
   } catch (e) {
     // TODO: put SIGN_IN_FAILED
   }
