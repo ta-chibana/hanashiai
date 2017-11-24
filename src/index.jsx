@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import { createStore, compose, applyMiddleware } from 'redux'
 import auth from 'Reducers/auth'
 import messages from 'Reducers/messages'
+import form from 'Reducers/form'
 import { combineReducers } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import saga from './sagas'
@@ -11,7 +12,7 @@ import Root from 'Containers/Root'
 
 const sagaMiddleware = createSagaMiddleware()
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-const rootReducer = combineReducers({ auth: auth, messages: messages })
+const rootReducer = combineReducers({ auth, messages, form })
 
 let store = createStore(
   rootReducer,

@@ -12,11 +12,21 @@ export default class Messages extends React.Component {
     ))
   }
 
+  changeMessage(e) {
+    this.props.onChange(e.target.value)
+  }
+
   render() {
+    const { message, onClick } = this.props
+
     return (
       <div>
         <h2>Messages</h2>
         {this.messageList}
+        <div>
+          <input type="textarea" value={message} onChange={this.changeMessage.bind(this)} />
+          <button onClick={onClick}>submit</button>
+        </div>
       </div>
     )
   }

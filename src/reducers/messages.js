@@ -1,4 +1,4 @@
-import { FETCH_MESSAGES_SUCCEEDED } from 'Actions/messages'
+import { FETCH_MESSAGES_SUCCEEDED, WRITE_MESSAGE_REQUESTED } from 'Actions/messages'
 import { SIGN_OUT_SUCCEEDED } from 'Actions/auth'
 
 const initialState = {}
