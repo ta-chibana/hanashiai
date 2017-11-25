@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import Auth from 'Components/Auth'
 import { authorized, signIn, signOut } from 'Actions/auth'
 import { subscribeMessages, unSubscribeMessages } from 'Actions/messages'
+import { requestPermission } from '../common/messaging'
 
 const mapStateToProps = (state) => {
   return {
@@ -20,6 +21,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(signOut())
     },
     onMount: () => {
+      requestPermission()
       firebaseApp.auth().onAuthStateChanged(user => {
         if (!user) {
           unSubscribeMessages(dispatch)
