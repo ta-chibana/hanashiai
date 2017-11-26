@@ -1,7 +1,11 @@
 node_modules
-public
+
+public/index.js
+public/firebase-messaging-sw.js
+
+src/firebase/config.js
+
+.firebaserc
 database.rules.json
 firebase.json
-.firebaserc
-src/firebase/config.js
 firebase-debug.log

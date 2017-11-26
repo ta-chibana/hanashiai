@@ -1,10 +1,13 @@
 const path = require('path')
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src/index.jsx'),
+  entry: {
+    index: './src/index.jsx',
+    'firebase-messaging-sw': './src/firebase-messaging-sw.js'
+  },
   output: {
+    filename: '[name].js',
     path: path.resolve(__dirname, 'public'),
-    filename: 'index.js',
     publicPath: '/'
   },
   module: {
