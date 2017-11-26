@@ -4,12 +4,50 @@ export default class Messages extends React.Component {
   get messageList() {
     const { messages } = this.props
 
-    return Object.keys(messages).map((key) => (
-      <div key={key}>
-        <span>{`${messages[key].userName}: `}</span>
-        <span>{messages[key].message}</span>
+    if (!messages) {
+      return
+    }
+
+    const listStyle = {
+      display: 'flex',
+      marginBottom: '10px',
+      paddingBottom: '10px',
+      borderBottom: '1px solid #000000'
+    }
+
+    const list = Object.keys(messages).map((key) => (
+      <div key={key} style={listStyle}>
+        {this.thumbnail(messages[key])}
+        <div>
+          <div style={{ lineHeight: '35px' }}>{`${messages[key].userName}`}</div>
+          <div>{messages[key].message}</div>
+        </div>
       </div>
     ))
+
+    const style = {
+      borderTop: '1px solid #000000',
+      paddingTop: '10px'
+    }
+
+    return (
+      <div style={style}>
+        {list}
+      </div>
+    )
+  }
+
+  thumbnail(message) {
+    const { photoURL } = message
+    const style = {
+      width: '35px',
+      height: '35px',
+      marginRight: '10px'
+    }
+
+    return (
+      <img src={photoURL} style={style} />
+    )
   }
 
   changeMessage(e) {

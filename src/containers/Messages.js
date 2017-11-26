@@ -7,7 +7,7 @@ import Messages from 'Components/Messages'
 
 const mapStateToProps = (state) => {
   return {
-    userName: state.auth.displayName,
+    user: state.auth,
     messages: state.messages,
     message: state.form.message
   }
@@ -15,8 +15,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onClick: (userName, message) => {
-      dispatch(writeMessageRequested(userName, message))
+    onClick: (user, message) => {
+      dispatch(writeMessageRequested(user, message))
     },
     onChange: (message) => {
       dispatch(changeMessage(message))
@@ -25,9 +25,9 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const mergeProps = (stateProps, dispatchProps) => {
-  const { messages, message } = stateProps
+  const { user, messages, message } = stateProps
   const onClick = () => {
-    return dispatchProps.onClick(stateProps.userName, message)
+    return dispatchProps.onClick(user, message)
   }
 
   return {
@@ -41,4 +41,3 @@ const mergeProps = (stateProps, dispatchProps) => {
 export default connect(
   mapStateToProps, mapDispatchToProps, mergeProps
 )(Messages)
-

@@ -4,16 +4,16 @@ import {
 
 const initialState = {
   uid: null,
-  displayName: null,
-  email: null
+  displayName: '',
+  photoURL: ''
 }
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case SIGN_IN_SUCCEEDED:
     case AUTHORIZED: {
-      const { uid, email, displayName } = action.user
-      return { uid, email, displayName }
+      const { uid, displayName, photoURL } = action.user
+      return { uid, displayName, photoURL }
     }
     case SIGN_OUT_SUCCEEDED: {
       return initialState

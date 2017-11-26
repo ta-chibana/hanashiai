@@ -21,10 +21,10 @@ export const unSubscribeMessages = () => {
   messagesRef.off()
 }
 
-export const writeMessageRequested = (userName, message) => {
+export const writeMessageRequested = (user, message) => {
   return {
     type: WRITE_MESSAGE_REQUESTED,
-    userName, message
+    user, message
   }
 }
 

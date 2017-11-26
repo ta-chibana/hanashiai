@@ -30,9 +30,9 @@ function* signOut() {
 }
 
 function* writeMessage(action) {
-  const { userName, message } = action
+  const { user, message } = action
   try {
-    yield call(dbClient.writeMessage, userName, message)
+    yield call(dbClient.writeMessage, user, message)
     yield put(writeMessageSucceeded())
   } catch (e) {
     console.error(e)
