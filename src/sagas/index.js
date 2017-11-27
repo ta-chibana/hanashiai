@@ -1,5 +1,5 @@
 import 'regenerator-runtime/runtime'
-import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
+import { call, put, takeEvery } from 'redux-saga/effects'
 import * as authClient from '../common/authorize'
 import * as dbClient from '../common/database'
 import * as messaging from '../common/messaging'
@@ -7,8 +7,7 @@ import {
   signOutSucceeded, SIGN_IN_REQUESTED, SIGN_OUT_REQUESTED
 } from 'Actions/auth'
 import {
-  writeMessageSucceeded,
-  WRITE_MESSAGE_REQUESTED 
+  writeMessageSucceeded, WRITE_MESSAGE_REQUESTED 
 } from 'Actions/messages'
 import { PERMISSION_REQUESTED } from 'Actions/messaging'
 
