@@ -10,14 +10,14 @@ const fetchMessagesSucceeded = (snapshot) => {
   }
 }
 
-export const subscribeMessages = (dispatch) => {
+export const observeMessages = (dispatch) => {
   messagesRef.on('value',
     (snapshot) => dispatch(fetchMessagesSucceeded(snapshot)),
     (error) => console.error(error)
   )
 }
 
-export const unSubscribeMessages = () => {
+export const unobserveMessages = () => {
   messagesRef.off()
 }
 

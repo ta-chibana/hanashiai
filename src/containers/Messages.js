@@ -1,7 +1,5 @@
 import { connect } from 'react-redux'
-import {
-  subscribeMessages, unSubscribeMessages, writeMessageRequested
-} from 'Actions/messages'
+import { writeMessageRequested } from 'Actions/messages'
 import { changeMessage } from 'Actions/form'
 import Messages from 'Components/Messages'
 

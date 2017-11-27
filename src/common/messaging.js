@@ -12,14 +12,6 @@ const storeToken = () => {
   })
 }
 
-const subscribeTokenRefresh = () => {
-  messaging.onTokenRefresh(() => {
-    storeToken
-  }).catch(e => {
-    console.error(e)
-  })
-}
-
 export const requestPermission = () => {
   messaging.requestPermission().then(
     storeToken

@@ -3,7 +3,7 @@ import { firebaseApp } from '../firebase'
 import { connect } from 'react-redux'
 import Auth from 'Components/Auth'
 import { authorized, signIn, signOut } from 'Actions/auth'
-import { subscribeMessages, unSubscribeMessages } from 'Actions/messages'
+import { observeMessages, unobserveMessages } from 'Actions/messages'
 import { permissionRequested } from 'Actions/messaging'
 
 const mapStateToProps = (state) => {
@@ -23,12 +23,12 @@ const mapDispatchToProps = (dispatch) => {
     onMount: () => {
       firebaseApp.auth().onAuthStateChanged(user => {
         if (!user) {
-          unSubscribeMessages(dispatch)
+          unobserveMessages(dispatch)
           return
         }
         dispatch(authorized(user))
         dispatch(permissionRequested())
-        subscribeMessages(dispatch)
+        observeMessages(dispatch)
       })
     }
   }
