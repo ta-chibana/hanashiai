@@ -62,7 +62,12 @@ export default class Messages extends React.Component {
         <h2>Messages</h2>
         {this.messageList}
         <div>
-          <input type="textarea" value={message} onChange={this.changeMessage.bind(this)} />
+          <input
+            type="textarea"
+            value={message}
+            onChange={this.changeMessage.bind(this)}
+            placeholder="100文字まで"
+          />
           <button onClick={onClick}>submit</button>
         </div>
       </div>
