@@ -1,0 +1,11 @@
+{
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null",
+    "messages": {
+			"$message": {
+        ".validate": "newData.child('message').val().length <= 100"
+      }
+    }
+  }
+}

@@ -6,6 +6,4 @@ public/firebase-messaging-sw.js
 src/firebase/config.js
 
 .firebaserc
-database.rules.json
-firebase.json
 firebase-debug.log
