@@ -4,6 +4,16 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp(functions.config().firebase);
 
+exports.welcomeUser = functions.auth.user().onCreate(e => {
+  const name = e.data.displayName;
+
+  admin.database().ref('/messages').push({
+    userName: 'admin',
+    photoURL: 'icon.png',
+    message: `Welcome, ${name} !`
+  });
+});
+
 exports.sendNotifications = functions.database.ref('/messages/{messageId}').onCreate(e => {
   const snapshot = e.data;
 
