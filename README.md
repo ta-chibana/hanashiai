@@ -35,14 +35,27 @@
     $ firebase use --add staging
     ```
 
-7. build scripts(development build)
+7. create firebase config file( `src/firebase/config.js` )
+
+    ```js
+    export default {
+      apiKey: "API_KEY",
+      authDomain: "AUTH_DOMAIN",
+      databaseURL: "DATABASE_URL",
+      projectId: "PROJECT_ID",
+      storageBucket: "STORAGE_BUCKET",
+      messagingSenderId: "MESSAGING_SENDER_ID"
+    }
+    ```
+
+8. build scripts(development build)
 
     ```sh
     $ yarn build
     ```
 
-8. enable google authentication on firebase console
-9. deploy
+9. enable google authentication on firebase console
+10. deploy
 
     ```sh
     $ firebase deploy
