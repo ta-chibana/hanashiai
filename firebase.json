@@ -6,8 +6,6 @@
     "public": "public",
     "ignore": [
       "firebase.json",
-      "package.json",
-      "firebase-debug.log",
       "**/.*",
       "**/node_modules/**"
     ]
