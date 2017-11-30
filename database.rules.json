@@ -3,7 +3,7 @@
     ".read": "auth != null",
     ".write": "auth != null",
     "messages": {
-			"$message": {
+      "$message": {
         ".validate": "newData.child('message').val().length > 0 && newData.child('message').val().length <= 100"
       }
     },
